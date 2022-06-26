@@ -10,15 +10,21 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../views/city/city_view.dart';
 import '../views/home/home_view.dart';
+import '../views/landing/landing_view.dart';
 import '../views/splash/splash_view.dart';
 
 class Routes {
   static const String splashView = '/';
   static const String homeView = '/home-view';
+  static const String landingView = '/landing-view';
+  static const String cityView = '/city-view';
   static const all = <String>{
     splashView,
     homeView,
+    landingView,
+    cityView,
   };
 }
 
@@ -28,6 +34,8 @@ class StackedRouter extends RouterBase {
   final _routes = <RouteDef>[
     RouteDef(Routes.splashView, page: SplashView),
     RouteDef(Routes.homeView, page: HomeView),
+    RouteDef(Routes.landingView, page: LandingView),
+    RouteDef(Routes.cityView, page: CityView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -41,6 +49,18 @@ class StackedRouter extends RouterBase {
     HomeView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => HomeView(),
+        settings: data,
+      );
+    },
+    LandingView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => LandingView(),
+        settings: data,
+      );
+    },
+    CityView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => CityView(),
         settings: data,
       );
     },
@@ -77,6 +97,38 @@ extension NavigatorStateExtension on NavigationService {
   }) async {
     return navigateTo(
       Routes.homeView,
+      id: routerId,
+      preventDuplicates: preventDuplicates,
+      parameters: parameters,
+      transition: transition,
+    );
+  }
+
+  Future<dynamic> navigateToLandingView({
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo(
+      Routes.landingView,
+      id: routerId,
+      preventDuplicates: preventDuplicates,
+      parameters: parameters,
+      transition: transition,
+    );
+  }
+
+  Future<dynamic> navigateToCityView({
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo(
+      Routes.cityView,
       id: routerId,
       preventDuplicates: preventDuplicates,
       parameters: parameters,

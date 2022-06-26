@@ -11,6 +11,6 @@ class SplashViewModel extends BaseViewModel {
     // notifyListeners();
     await Future.delayed(Duration(seconds: 2),);
 
-    locator<NavigationService>().pushNamedAndRemoveUntil(Routes.homeView);
+    locator<NavigationService>().pushNamedAndRemoveUntil(Routes.landingView);
   } // init
 } // SplashViewModel
