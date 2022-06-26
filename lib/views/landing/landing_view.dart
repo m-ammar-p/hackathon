@@ -53,7 +53,7 @@ class LandingView extends ViewModelBuilderWidget<LandingViewModel> {
                   top: 10, left: 20, right: 20, bottom: 53),
               child: Column(
                 children: [
-                  AppButton(text: "Select Current Location", onTap: () => viewModel.navigateToCityPage()),
+                  AppButton(text: "Select Current Location", onTap: () => viewModel.navigateToHomePage()),
                 ],
               ),
             ),

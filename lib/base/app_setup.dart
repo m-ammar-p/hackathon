@@ -1,4 +1,5 @@
 
+import 'package:hackathon/services/api_response.dart';
 import 'package:hackathon/views/city/city_view.dart';
 import 'package:hackathon/views/home/home_view.dart';
 import 'package:hackathon/views/landing/landing_view.dart';
@@ -17,7 +18,7 @@ import 'package:stacked_services/stacked_services.dart';
   ],
   dependencies: [
 
-    //LazySingleton(classType: AuthService),
+    LazySingleton(classType: ApiResponseService),
 
     // we have to register NavigationService
     // get_it

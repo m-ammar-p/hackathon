@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:hackathon/models/global_class.dart';
 import 'package:hackathon/shared/styles/styles.dart';
 import 'package:hackathon/shared/widgets/app_text_field.dart';
 import 'package:hackathon/views/city/city_view_model.dart';
@@ -27,7 +28,15 @@ class CityView extends ViewModelBuilderWidget<CityViewModel> {
                   Text("Select City", style: heading2.copyWith(color: Colors.black),),
 
                   // Search City Box
-                  AppTextField(placeholder: "Search City"),
+                  AppTextField(placeholder: "Search City",
+                    onChanged: (text) => viewModel.cityController.text = text,
+                    onSubmitted: (text) {
+                      viewModel.isCitySearch = true;
+                      GlobalClass.isCitySearch = true;
+                      GlobalClass.cityName = text;
+                      viewModel.navigateToHomePage();
+                    },
+                  ),
                 ],
               ),
             )

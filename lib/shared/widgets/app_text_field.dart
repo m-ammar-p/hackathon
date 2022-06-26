@@ -44,11 +44,11 @@ class AppTextField extends StatelessWidget {
         controller: controller,
         onChanged: onChanged,
         onSubmitted: onSubmitted,
-        style: paragraph2.copyWith(color: Colors.black),
+        style: paragraph2.copyWith(color: Colors.black, fontSize: 22),
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: placeholder,
-          hintStyle:  paragraph2.copyWith(color: Colors.black.withOpacity(0.5)),
+          hintStyle:  paragraph2.copyWith(color: Colors.black.withOpacity(0.5), fontSize: 22),
         ),
       ),
     );

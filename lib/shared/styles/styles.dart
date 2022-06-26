@@ -57,8 +57,8 @@ TextStyle heading6 = GoogleFonts.poppins(
 );
 
 TextStyle heading7 = GoogleFonts.poppins(
-  fontSize: 15,
-  fontWeight: FontWeight.w600,
+  fontSize: 22,
+  fontWeight: FontWeight.w400,
   color: Colors.white,
 );
 
@@ -70,10 +70,10 @@ TextStyle paragraph1 = GoogleFonts.poppins(
 );
 
 TextStyle paragraph2 = GoogleFonts.poppins(
-  fontSize: 17,
+  fontSize: 33,
   fontWeight: FontWeight.w400,
   letterSpacing: 15 * (3 / 100),
-  color: appGreyColor,
+  color: appWhiteColor,
 );
 
 TextStyle paragraph3 = GoogleFonts.poppins(
