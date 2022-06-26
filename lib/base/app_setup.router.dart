@@ -11,10 +11,13 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../views/home/home_view.dart';
+import '../views/splash/splash_view.dart';
 
 class Routes {
-  static const String homeView = '/';
+  static const String splashView = '/';
+  static const String homeView = '/home-view';
   static const all = <String>{
+    splashView,
     homeView,
   };
 }
@@ -23,11 +26,18 @@ class StackedRouter extends RouterBase {
   @override
   List<RouteDef> get routes => _routes;
   final _routes = <RouteDef>[
+    RouteDef(Routes.splashView, page: SplashView),
     RouteDef(Routes.homeView, page: HomeView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
   final _pagesMap = <Type, StackedRouteFactory>{
+    SplashView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => SplashView(),
+        settings: data,
+      );
+    },
     HomeView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => HomeView(),
@@ -42,6 +52,22 @@ class StackedRouter extends RouterBase {
 /// *************************************************************************
 
 extension NavigatorStateExtension on NavigationService {
+  Future<dynamic> navigateToSplashView({
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo(
+      Routes.splashView,
+      id: routerId,
+      preventDuplicates: preventDuplicates,
+      parameters: parameters,
+      transition: transition,
+    );
+  }
+
   Future<dynamic> navigateToHomeView({
     int? routerId,
     bool preventDuplicates = true,

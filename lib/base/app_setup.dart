@@ -1,11 +1,15 @@
+
 import 'package:hackathon/views/home/home_view.dart';
+import 'package:hackathon/views/splash/splash_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 @StackedApp(
 
   routes: [
-    MaterialRoute(page: HomeView, initial: true),
+    MaterialRoute(page: SplashView, initial: true),
+    MaterialRoute(page: HomeView,),
+
   ],
   dependencies: [
 
@@ -14,7 +18,7 @@ import 'package:stacked_services/stacked_services.dart';
     // we have to register NavigationService
     // get_it
     Singleton(classType: NavigationService),
-  ],
+  ]
 )
 class App {
   /** This class has no puporse besides housing the annotation that generates the required functionality **/
