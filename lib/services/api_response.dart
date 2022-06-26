@@ -43,7 +43,10 @@ class ApiResponseService {
       _apiResponse =
           APIResponse.fromJson(decodedJson);
 
+      if(temparature == null)
+        GlobalClass.cityName = "Error";
       print(temparature);
+
       return _apiResponse;
     } catch (e) {
       throw e.toString();

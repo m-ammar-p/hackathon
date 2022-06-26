@@ -33,8 +33,9 @@ class HomeView extends ViewModelBuilderWidget<HomeViewModel> {
                         onTap: () => viewModel.navigateToLandingPage(),
                         child: Icon(Icons.refresh, color: Colors.white,)),
 
+                    Spacer(),
                     Text(GlobalClass.cityName.toString(), style: heading7,),
-                    SizedBox(width: 50),
+                    Spacer(),
 
                   ],
                 ),
