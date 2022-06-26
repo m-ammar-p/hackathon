@@ -5,12 +5,19 @@ class AppButton extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
   final bool? isLoading;
+  Color? backgroundColor;
+  Icon icon;
+  TextStyle? style;
 
-  const AppButton({
+   AppButton({
     Key? key,
     required this.text,
     required this.onTap,
     this.isLoading,
+     this.backgroundColor,
+     required this.icon,
+     this.style,
+
   }) : super(key: key);
 
   @override
@@ -23,7 +30,7 @@ class AppButton extends StatelessWidget {
         alignment: Alignment.centerLeft,
         height: 72,
         decoration: BoxDecoration(
-          color: appGreyColor,
+          color: this.backgroundColor ?? appGreyColor,
           borderRadius: BorderRadius.circular(5),
         ),
         child: isLoading == true
@@ -35,16 +42,19 @@ class AppButton extends StatelessWidget {
                   ),
                 ),
               )
-            : Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    text,
-                    style: heading6,
-                  ),
-                  Icon(Icons.arrow_forward)
-                ],
-              ),
+            : Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      text,
+                      style: this.style ?? heading6,
+                    ),
+                      this.icon
+                  ],
+                ),
+            ),
       ),
     );
   } // build

@@ -10,7 +10,7 @@ class HomeViewModel extends BaseViewModel {
 
   final _apiresponse = locator<ApiResponseService>();
 
-  double? get temp => _apiresponse.temparature;
+  int? get temp =>  (_apiresponse.temparature)?.toInt();
 
   bool isLoading = false;
 
@@ -20,17 +20,26 @@ class HomeViewModel extends BaseViewModel {
       isLoading = true;
       runBusyFuture(_apiresponse.getResponseCity(apiKey: ApiKey.key, cityName: GlobalClass.cityName));
       isLoading = false;
+      GlobalClass.isCitySearch = false;
       notifyListeners();
+      return;
     }
-    isLoading = true;
-    runBusyFuture(_apiresponse.getResponse(apiKey: ApiKey.key));
-    isLoading = false;
-    notifyListeners();
+    else {
+      isLoading = true;
+      runBusyFuture(_apiresponse.getResponse(apiKey: ApiKey.key));
+      isLoading = false;
+      notifyListeners();
+      return;
+    }
   } // init
 
 
   void navigateToCityPage() {
     locator<NavigationService>().replaceWith(Routes.cityView);
-  } // navigateToLandingPage
+  } // navigateToCityPage
+
+  void navigateToLandingPage() {
+    locator<NavigationService>().replaceWith(Routes.landingView);
+  } // navigateToCityPage
 
 } // HomeViewModel

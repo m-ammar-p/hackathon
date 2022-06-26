@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:hackathon/constants/api/api_url.dart';
 import 'package:hackathon/models/ap_response.dart';
+import 'package:hackathon/models/global_class.dart';
 import 'package:http/http.dart' as http;
 
 class ApiResponseService {
@@ -23,6 +24,7 @@ class ApiResponseService {
       APIResponse.fromJson(decodedJson);
 
      print(temparature);
+      GlobalClass.cityName = "London";
        return _apiResponse;
     } catch (e) {
       throw e.toString();

@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:hackathon/models/global_class.dart';
 import 'package:hackathon/shared/assets/assets_path.dart';
 import 'package:hackathon/shared/styles/styles.dart';
+import 'package:hackathon/utils/helper.dart';
 import 'package:hackathon/views/home/home_view_model.dart';
 import 'package:stacked/stacked.dart';
 
@@ -19,32 +20,63 @@ class HomeView extends ViewModelBuilderWidget<HomeViewModel> {
     ),
         Scaffold(
           backgroundColor: Colors.transparent,
-          body: Padding(
-            padding: const EdgeInsets.only(top:65, left: 20, right: 20),
-            child: Column(
-              children: [
-                // Navigation Bar
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              // Navigation Bar
+              Padding(
+                padding: const EdgeInsets.only(top:65, left: 20, right: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     GestureDetector(
-                        onTap: () => viewModel.navigateToCityPage(),
+                        onTap: () => viewModel.navigateToLandingPage(),
                         child: Icon(Icons.refresh, color: Colors.white,)),
-                    Spacer(),
+
                     Text(GlobalClass.cityName.toString(), style: heading7,),
-                    Spacer(),
+                    SizedBox(width: 50),
+
                   ],
                 ),
+              ),
 
-                // Degree Celsius
-                SizedBox(height: 100,),
-                Text(viewModel.temp.toString(), style: heading1,),
-                viewModel.isLoading ?
-                CircularProgressIndicator() :
-                Text("Night, Clear Sky", style: paragraph2),
+              // Degree Celsius
+              SizedBox(height: 100,),
+              viewModel.isLoading ?
+              CircularProgressIndicator() :
+              Text("${viewModel.temp.toString()}\u00B0", style: heading1,),
 
-              ],
-            ),
+              // Clear Sky Text
+              Text("Night, Clear Sky", style: paragraph2),
+
+              Spacer(),
+              // forecast time
+              Container(
+                height: 250,
+                width: screenWidth(context),
+                decoration: BoxDecoration(
+                  color: appWhiteColor,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 44, left: 20, right: 20),
+                  child: Column(
+                    children: [
+                      // Today row
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Today", style: heading3,),
+                          
+                          Text("Sydney, Australia", style: paragraph3,)
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+
+            ],
           ),
         ),
   ]

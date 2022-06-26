@@ -9,7 +9,7 @@ const Color appWhiteColor = Color(0xFFFFFFFF);
 const Color appBlueColor = Color(0xFF6DC9EF);
 const Color appGreenSecondary = Color(0xFFAEDC81);
 const Color appGreySecondary = Color(0xFFF1F1F1);
-const Color appGreyDark = Color(0xFFB1B1B1);
+const Color appGreyDark = Color(0xFF5F5F5F);
 const Color appRedColor = Color(0xFFEF574B);
 
 
@@ -29,9 +29,9 @@ TextStyle heading2 = GoogleFonts.poppins(
 );
 
 TextStyle heading3 = GoogleFonts.poppins(
-  fontSize: 15,
+  fontSize: 20,
   fontWeight: FontWeight.w500,
-  letterSpacing: 15 * (20 / 100),
+  //letterSpacing: 15 * (20 / 100),
   color: Colors.black,
 );
 
@@ -79,8 +79,8 @@ TextStyle paragraph2 = GoogleFonts.poppins(
 TextStyle paragraph3 = GoogleFonts.poppins(
   fontSize: 15,
   fontWeight: FontWeight.w300,
-  letterSpacing: 15 * (3 / 100),
-  color: appGreyColor,
+  // letterSpacing: 15 * (3 / 100),
+  color: appGreyDark,
 );
 
 TextStyle paragraph4 = GoogleFonts.poppins(
